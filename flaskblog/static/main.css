@@ -44,14 +44,22 @@ a.article-title:hover {
 
 .article-content {
   white-space: pre-line;
+  margin-left: 5px;
 }
 
+.account-img {
+  /*float: left;*/
+}
 .article-img {
+  display: block;
   height: 65px;
   width: 65px;
   margin-right: 16px;
+  float: left;
 }
-
+.media-body{
+  margin-left: 75px;
+}
 .article-metadata {
   padding-bottom: 1px;
   margin-bottom: 4px;
@@ -74,6 +82,7 @@ a.article-title:hover {
   width: 125px;
   margin-right: 20px;
   margin-bottom: 16px;
+  float: left;
 }
 
 .account-heading {
