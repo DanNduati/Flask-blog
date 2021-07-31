@@ -166,8 +166,8 @@ def send_reset_email(user):
     #get token from the function in the user model
     token = user.get_reset_token()
     #send the email with the url with the reset token
-    msg = Message('Password Reset Request', sender='dannduati2@gmail.com',recipients=[user.email])
-    msg_body = f'''To reset your password, visit: 
+    msg = Message('Password Reset Request',recipients=[user.email])
+    msg.html = f'''To reset your password, visit: 
 {url_for('reset_token',token=token,_external=True)}
 If you did not not make this request please ignore this email
 '''
@@ -199,6 +199,7 @@ def reset_token(token):
     #user has to be logged out
     if current_user.is_authenticated:
         return redirect(url_for('home'))
+    #token = request.args.get('token,None')
     #verify the reset token and get the user id from the email provided
     user = User.verify_reset_token(token)
     if user is None:
