@@ -5,7 +5,6 @@ from flask_login import LoginManager
 from flask_mail import Mail
 from flaskblog.config import Config
 
-
 #Extensions initialized without the app variable
 #This as per flask documentation - this is so that the extension object does not initially get bound to the application
 #Using this design pattern,no app specific state is stored on the extension object and as so one extension object
@@ -43,10 +42,11 @@ def create_app(config_class = Config):
 	from flaskblog.users.routes import users
 	from flaskblog.posts.routes import posts
 	from flaskblog.main.routes import main
-
+	#import the instanc of the error blueprint
+	from flaskblog.errors.handlers import errors 
 	#register the blueprints
 	app.register_blueprint(users)
 	app.register_blueprint(posts)
 	app.register_blueprint(main)
-
+	app.register_blueprint(errors)
 	return app
