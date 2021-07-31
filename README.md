@@ -1,1 +1,2 @@
-# flaskblog
+# Flaskblog
+## Flask refresher project
