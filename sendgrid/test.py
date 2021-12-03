@@ -1,20 +1,32 @@
 import os
+from os.path import join,dirname
+from dotenv import load_dotenv
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 
+dotenv_path = join(dirname(__file__),'.env')
+load_dotenv(dotenv_path)
+
+# Retrieve send-grid api key, sender and recepient email from .env 
+api_key = os.environ.get('API_KEY',None)
+from_email = os.environ.get('EMAIL',None)
+to_email = os.environ.get('EMAIL',None)
+
 message = Mail(
-        from_email = 'dannduati2@gmail.com',
-        to_emails = 'dannduati2@gmail.com',
+        from_email = from_email,
+        to_emails = to_email,
         subject = 'Test email send with Twilio Sendgrid',
-        html_content = '<strong>Hello there Daniel!</strong>'
+        html_content = '<strong>Hello there!</strong>'
         )
 try:
-    sg =SendGridAPIClient('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')
+    sg =SendGridAPIClient(api_key)
     response = sg.send(message)
-    print(response.status_code)
-    print(response.body)
-    print(response.headers)
+    #print(response.status_code)
+    if response.status_code != 202:
+        raise ValueError('Could not send email!')
+    print('Email sent successfully!')
+    #print(response.body)
+    #print(response.headers)
 
 except Exception as e:
     print(e.message)
-
