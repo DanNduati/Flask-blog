@@ -3,13 +3,12 @@
 Flask blog  is a simple blog using Flask and Python.This is a learning project which follows the tutorial of [Corey Schafer][corey] on Youtube.
 
 # Features!
-  - Blogspot website with multiple users
   - Create, update and delete posts
-  - Unique id for each post and user
-  - Users can change their profile picture
+  - Sqlite database
+  - Users can update their profile picture
   - Filtered pages for each user and their posts
   - Sengrid email api for password reset
-  - Structred with flask blueprint
+  - Structured with flask blueprint
 
 ### Usage
 Install dependencies
@@ -32,5 +31,7 @@ python run.py
  - User account deletion.
  - Tests
  - Database migration
+ - Dockerise 
+ - Deploy to whatever platform
 
    [corey]: <https://www.youtube.com/channel/UCCezIgC97PvUuR4_gbFUs5g>
